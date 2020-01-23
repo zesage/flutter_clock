@@ -30,11 +30,7 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
   var _location = '';
   Timer _timer;
 
-  GlobalKey<StageState> _stage = GlobalKey<StageState>();
   Scene scene;
-  Actor hourHand;
-  Actor minuteHand;
-  Actor secondHand;
   ClockTimeControl _clockControl = ClockTimeControl();
   ClockHandControl _clockHandControl = ClockHandControl();
 
@@ -42,12 +38,12 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
   Animation<Matrix4> _cameraAnimation;
   int cameraAnimateIndex = -1;
   List<Matrix4> cameraAnimateMatrix = [
-    makeViewMatrix(Vector3(0.000, 0, 1000), Vector3(0.000, 0.000, 0.000), Vector3(0.000, 1.000, 0.000)),
-    makeViewMatrix(Vector3(-500, 0, 800), Vector3(0.000, 0.000, 0.000), Vector3(0.000, 1.000, 0.000)),
-    makeViewMatrix(Vector3(-500, 0, 800), Vector3(0.000, 0.000, 0.000), Vector3(0.000, 1.000, 0.000)),
-    makeViewMatrix(Vector3(0.000, 0, 1000), Vector3(0.000, 0.000, 0.000), Vector3(0.000, 1.000, 0.000)),
-    makeViewMatrix(Vector3(500, 0, 800), Vector3(0.000, 0.000, 0.000), Vector3(0.000, 1.000, 0.000)),
-    makeViewMatrix(Vector3(500, 0, 800), Vector3(0.000, 0.000, 0.000), Vector3(0.000, 1.000, 0.000)),
+    makeViewMatrix(Vector3(0.0, 0.0, 1000.0), Vector3(0.0, 0.0, 0.0), Vector3(0.0, 1.0, 0.0)),
+    makeViewMatrix(Vector3(-500.0, 0.0, 800.0), Vector3(0.0, 0.0, 0.0), Vector3(0.0, 1.0, 0.0)),
+    makeViewMatrix(Vector3(-500.0, 0.0, 800.0), Vector3(0.0, 0.0, 0.0), Vector3(0.0, 1.0, 0.0)),
+    makeViewMatrix(Vector3(0.0, 0.0, 1000.0), Vector3(0.0, 0.0, 0.0), Vector3(0.0, 1.0, 0.0)),
+    makeViewMatrix(Vector3(500.0, 0.0, 800.0), Vector3(0.0, 0.0, 0.0), Vector3(0.0, 1.0, 0.0)),
+    makeViewMatrix(Vector3(500.0, 0.0, 800.0), Vector3(0.0, 0.0, 0.0), Vector3(0.0, 1.0, 0.0)),
   ];
 
   void _updateCamera() {
@@ -72,9 +68,9 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
 
   void _onSceneCreated(Scene scene) {
     this.scene = scene;
-    scene.camera.position.setFrom(Vector3(0.000, -500.000, 1500.000));
-    scene.camera.target.setFrom(Vector3(0.000, 0.000, 0.000));
-    scene.camera.up.setFrom(Vector3(0.000, 1.000, 0.000));
+    scene.camera.position.setFrom(Vector3(0.0, -500.0, 1500.0));
+    scene.camera.target.setFrom(Vector3(0.0, 0.0, 0.0));
+    scene.camera.up.setFrom(Vector3(0.0, 1.0, 0.0));
     scene.camera.updateTransform();
     // Animate camera
     _updateCameraStatus(AnimationStatus.completed);
@@ -129,12 +125,12 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
   Actor makeBlock({String name, Vector3 position, double size, List<Actor> faces}) {
     final double radius = size / 2 - size * 0.0015;
     return Actor(name: name, position: position, children: [
-      Actor(name: faces[0].name, position: Vector3(0, 0, radius), rotation: Vector3(0, 0, 0), width: size, height: size, widget: FittedBox(child: faces[0].widget), children: faces[0].children),
-      Actor(name: faces[1].name, position: Vector3(radius, 0, 0), rotation: Vector3(0, 90, 0), width: size, height: size, widget: FittedBox(child: faces[1].widget), children: faces[1].children),
-      Actor(name: faces[2].name, position: Vector3(0, 0, -radius), rotation: Vector3(0, 180, 0), width: size, height: size, widget: FittedBox(child: faces[2].widget), children: faces[2].children),
-      Actor(name: faces[3].name, position: Vector3(-radius, 0, 0), rotation: Vector3(0, 270, 0), width: size, height: size, widget: FittedBox(child: faces[3].widget), children: faces[3].children),
-      Actor(name: faces[4].name, position: Vector3(0, -radius, 0), rotation: Vector3(90, 0, 0), width: size, height: size, widget: FittedBox(child: faces[4].widget), children: faces[4].children),
-      Actor(name: faces[5].name, position: Vector3(0, radius, 0), rotation: Vector3(270, 0, 0), width: size, height: size, widget: FittedBox(child: faces[5].widget), children: faces[5].children),
+      Actor(name: faces[0].name, position: Vector3(0, 0, radius), rotation: Vector3(0, 0, 0), width: size, height: size, widget: faces[0].widget, children: faces[0].children),
+      Actor(name: faces[1].name, position: Vector3(radius, 0, 0), rotation: Vector3(0, 90, 0), width: size, height: size, widget: faces[1].widget, children: faces[1].children),
+      Actor(name: faces[2].name, position: Vector3(0, 0, -radius), rotation: Vector3(0, 180, 0), width: size, height: size, widget: faces[2].widget, children: faces[2].children),
+      Actor(name: faces[3].name, position: Vector3(-radius, 0, 0), rotation: Vector3(0, 270, 0), width: size, height: size, widget: faces[3].widget, children: faces[3].children),
+      Actor(name: faces[4].name, position: Vector3(0, -radius, 0), rotation: Vector3(90, 0, 0), width: size, height: size, widget: faces[4].widget, children: faces[4].children),
+      Actor(name: faces[5].name, position: Vector3(0, radius, 0), rotation: Vector3(270, 0, 0), width: size, height: size, widget: faces[5].widget, children: faces[5].children),
     ]);
   }
 
@@ -170,8 +166,7 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
           height: 298,
           color: Color.fromRGBO(19, 19, 19, 1.0),
           child: Stage(
-            key: _stage,
-            interactive: false,
+            interactive: false, // enable interactive need to remove _updateCameraStatus(AnimationStatus.completed)
             onSceneCreated: _onSceneCreated,
             children: [
               makeBlock(name: 'block', position: Vector3(0, 0, 0), size: blockSize * 1.1, faces: [

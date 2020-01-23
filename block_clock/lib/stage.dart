@@ -16,10 +16,10 @@ class Stage extends StatefulWidget {
   final List<Actor> children;
 
   @override
-  StageState createState() => StageState();
+  _StageState createState() => _StageState();
 }
 
-class StageState extends State<Stage> {
+class _StageState extends State<Stage> {
   Scene scene;
   Offset _lastFocalPoint;
 
