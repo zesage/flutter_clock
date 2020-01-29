@@ -258,11 +258,11 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
                         children: <Widget>[
                           Align(
                             alignment: Alignment.topCenter,
-                            child: Text(_location, style: TextStyle(fontSize: blockSize * 0.09, color: Colors.white.withOpacity(0.35))),
+                            child: FittedBox(child: Text(_location, style: TextStyle(fontSize: blockSize * 0.09, color: Colors.white.withOpacity(0.35)))),
                           ),
                           Align(
                             alignment: Alignment.bottomCenter,
-                            child: Text(_condition, style: TextStyle(fontSize: blockSize * 0.2, color: Colors.white.withOpacity(0.6))),
+                            child: Text(_condition, style: TextStyle(fontSize: blockSize * 0.13, color: Colors.white.withOpacity(0.5))),
                           ),
                         ],
                       ),
