@@ -1,11 +1,14 @@
-# BlockClock
+# Block
 
-A clock for [Flutter Clock](https://flutter.dev/clock) contest.
+A clock for [Flutter Clock](https://flutter.dev/clock) challenge.
 
-## assets
-[hour.flr](https://rive.app/a/markhu/files/flare/hour/preview)
-[minute.flr](https://rive.app/a/markhu/files/flare/minute/preview)
-[hand.flr](https://rive.app/a/markhu/files/flare/hand/preview)
+## Assets
+1. [hour.flr](https://rive.app/a/markhu/files/flare/hour/preview)
+2. [minute.flr](https://rive.app/a/markhu/files/flare/minute/preview)
+3. [hand.flr](https://rive.app/a/markhu/files/flare/hand/preview)
 
-## Screenshot
+## Screenshots
 ![screenshot](block.gif)
+
+## Packages
+Stage widget: https://github.com/zesage/flutter_stage
