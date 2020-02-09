@@ -151,6 +151,20 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
     );
   }
 
+  Widget makeBackground() {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: RadialGradient(
+          center: Alignment(0, 0),
+          radius: 0.62,
+          colors: [Color.fromRGBO(19, 19, 19, 1.0), Color.fromRGBO(49, 49, 49, 1.0), Color.fromRGBO(19, 19, 19, 1.0)],
+          stops: [0.1, 0.5, 0.9],
+          // tileMode: TileMode.repeated,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final double blockSize = 600;
@@ -169,6 +183,7 @@ class _BlockClockState extends State<BlockClock> with TickerProviderStateMixin {
             interactive: false, // enable interactive need to remove _updateCameraStatus(AnimationStatus.completed)
             onSceneCreated: _onSceneCreated,
             children: [
+              Actor(position: Vector3(0, 0, -blockSize), width: blockSize * 8, height: blockSize * 3.2, widget: makeBackground()),
               makeBlock(name: 'block', position: Vector3(0, 0, 0), size: blockSize * 1.1, faces: [
                 Actor(
                   name: 'front',
